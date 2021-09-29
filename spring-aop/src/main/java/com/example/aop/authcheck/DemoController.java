@@ -15,6 +15,9 @@ public class DemoController {
     public String alive() {
         return "服务一切正常";
     }
+
+
+    @AuthChecker
     @PostMapping("/aop/http/user_info")
     public String callSomeInterface() {
         return "调用了 user_info 接口.";
