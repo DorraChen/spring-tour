@@ -17,8 +17,14 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class AopTest {
     @Autowired
     private Service service;
+
     @Test
     public void aopTest() throws InterruptedException {
         service.server();
+    }
+
+    @Test
+    public void aopTestB() throws InterruptedException {
+        service.serverB();
     }
 }

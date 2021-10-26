@@ -21,7 +21,6 @@ public class ExampleAspect {
 
     private final Logger logger = LoggerFactory.getLogger(ExampleAspect.class);
 
-
     @Around("@annotation(com.example.aop.cy.LogExecutionTime)")
     public Object logExecutionTime(ProceedingJoinPoint joinPoint) throws Throwable {
         final long start = System.currentTimeMillis();
@@ -37,5 +36,4 @@ public class ExampleAspect {
 
         return proceed;
     }
-
 }

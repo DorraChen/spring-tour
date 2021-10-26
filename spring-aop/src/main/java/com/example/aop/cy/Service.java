@@ -1,5 +1,7 @@
 package com.example.aop.cy;
 
+import org.springframework.aop.framework.AopContext;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
@@ -10,19 +12,21 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class Service {
+    @Autowired
+    private ServiceB serviceB;
 
-    @LogExecutionTime
+    //    @LogExecutionTime
     public void server() throws InterruptedException {
-//        Thread.sleep(2000);
-//        if(AopContext.currentProxy() instanceof Service)
-//        {
-//            ((Service)AopContext.currentProxy()).doServer(2000);
-//        }
-        this.doServer(2000);
+            ((Service) AopContext.currentProxy()).doServer(2000);
+//        this.doServer(2000);
     }
 
-//    @LogExecutionTime
+    @LogExecutionTime
     public void doServer(long mills) throws InterruptedException {
         Thread.sleep(mills);
+    }
+
+    public void serverB() throws InterruptedException {
+        serviceB.doServer(2000);
     }
 }
